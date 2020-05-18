@@ -1,0 +1,64 @@
+{
+  "name": "butterfly-dag",
+  "version": "2.8.9",
+  "description": "一个基于数据驱动的节点式编排组件库，让你有方便快捷定制可视化流程图表",
+  "main": "dist/index.js",
+  "es": "es/index.js",
+  "pack": "pack/index.js",
+  "scripts": {
+    "test": "webpack && echo \"Error: no test specified\" && exit 1",
+    "release": "rollup -c && npm publish",
+    "compile": "./node_modules/webpack/bin/webpack.js",
+    "build": "webpack && rollup -c && cp -r static ./es/ && cp -r static ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alibaba/butterfly.git"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.9.0",
+    "@babel/plugin-proposal-class-properties": "~7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "~7.9.0",
+    "@babel/preset-env": "~7.9.0",
+    "@babel/preset-react": "~7.9.1",
+    "babel-loader": "8.1.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.26.2",
+    "css-loader": "~3.5.3",
+    "jquery": "^3.5.0",
+    "less": "~3.11.1",
+    "less-loader": "~5.0.0",
+    "lodash": "^4.17.15",
+    "mini-css-extract-plugin": "^0.9.0",
+    "rollup": "~2.1.0",
+    "rollup-plugin-babel": "~4.4.0",
+    "rollup-plugin-commonjs": "~10.1.0",
+    "rollup-plugin-extensions": "~0.1.0",
+    "rollup-plugin-json": "~4.0.0",
+    "rollup-plugin-peer-deps-external": "~2.2.0",
+    "rollup-plugin-postcss": "~3.1.1",
+    "rollup-plugin-url": "~3.0.1",
+    "style-loader": "~1.2.0",
+    "url-loader": "~4.1.0",
+    "webpack": "~4.43.0",
+    "webpack-cli": "~3.3.11"
+  },
+  "peerDependencies": {
+    "jquery": ">=2.0.0",
+    "lodash": ">=4.0.0"
+  },
+  "dependencies": {
+    "@antv/hierarchy": "~0.6.2",
+    "d3-force": "~2.0.1",
+    "dom-to-image": "~2.6.0",
+    "eventemitter3": "4.0.0"
+  },
+  "keywords": [
+    "节点式编程，数据图，流程图，连通图"
+  ],
+  "author": "noonnightstorm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alibaba/butterfly/issues"
+  },
+  "homepage": "https://github.com/alibaba/butterfly#readme"
+}
