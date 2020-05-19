@@ -7,88 +7,20 @@ import MindMap from './index.jsx';
 const Node = require('../../../index.js').TreeNode;
 const $ = require('jquery');
 
+var options = {}
 class BaseNode extends Node {
   constructor(opts) {
     super(opts);
   }
 
-  addNode = (node) => {
-    return MindMap.addNode(this, node)
-  }
-
-  // removeNode = (node) => {
-
-  // }
-
   draw = (opts) => {
-    const _this= this
+    const _this= this;
+    options = opts;
     let container = $('<div class="mind-map-node"></div>')
       .css('top', opts.top)
       .css('left', opts.left)
       .attr('id', opts.id);
       let logoContainer = $('<div class="logo-container"></div>');
-
-
-
-    // const newLocal = `
-    // <div class='title'>
-    // <span class="add-node"><i class="iconfont">&#xe6a1;</i></span>
-    //   <span>
-    //   <select class="selectBox">
-    //   <option value="1">task1</option>
-    //   <option value="2">task2</option>
-    //   </select>
-    //   </span>
-    //   <span class="add-node"><i class="iconfont">&#xe6a1;</i></span>
-    // </div>`;
-    // let plusIcon = $(`
-    // <div class='add-node'>
-    //   <span class="add-node"><i class="iconfont">&#xe6a1;</i></span>
-    // </div>`);
-
-    // titleDom.append(plusIcon);
-    // let title = $(newLocal);
-
-    // let content = $(`
-	
-		// 	<div class="box-content">
-    //     <div class="items box-top">
-    //     <span class="add-node"><i class="iconfont">&#xe6a1;</i></span>
-    //     </div>
-    //     <div class="items box-left">
-    //     <span class="add-node"><i class="iconfont">&#xe6a1;</i></span>
-    //     </div>
-    //     <div class="items box-right">
-    //     <span class="add-node box-right"><i class="iconfont">&#xe6a1;</i></span>
-    //     </div>
-    //   </div>
-      
-    // `)
-
-    // titleDom.append(title);
-
-    // titleDom.find('.selectBox').on('change', function () {
-        
-    //     alert("aaaaaaaaaaaaaaaaaaa");
-    // }).on('mousedown', function(){
-    //   console.log("mousedown.......")
-    //   event.stopPropagation();
-    // })
-
-    // titleDom.find('.add-node').on('click', function(){
-    //   console.log("click")
-    // }).on('mousedown', function(){
-    //   console.log("mousedown.......")
-    //   event.stopPropagation();
-    // })
-
-    // titleDom.mousemove(function() {
-     
-    // })
-   
-    // container.append(titleDom).mouseover(function(){
-    //   console.log("我来咯 我来咯");
-    // });
     
     const selectNode = $(`<select class=".select">
     <option>step1</option>
@@ -105,20 +37,15 @@ class BaseNode extends Node {
   const iconBtnRight = $(`<div class="btn-right">+</div>`)
   const iconBtnBottom = $(`<div class="btn-bottom">+</div>`)
 
-  iconBtnLeft.on('click',function(){
-    _this.addNode([{
-      id: 'xxxx',
-      top: 100,
-      left: 100,
-      Class: this, //设置基类之后，画布会根据自定义的类来渲染
-      children: [{
-        id: 'subNode1',
-        Class: Node,
-        title: '子节点 1',
-        side: "left"
-      },  
-    ]
-    }])
+  iconBtnLeft.on('click',function(e){
+    options.children = [{
+      id: 'subNode1',
+      Class: Node,
+      title: '子节点 1',
+      side: "left"
+    }]
+    e.stopPropagation()
+    _this.draw(options)
   })
   
   iconBtnRight.on('click',function(){
